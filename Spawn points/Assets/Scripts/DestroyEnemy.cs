@@ -6,7 +6,7 @@ public class DestroyEnemy : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<MoveEnemies>(out MoveEnemies enemy))
+        if (collision.TryGetComponent<MovementEnemies>(out MovementEnemies enemy))
             Destroy(collision.gameObject);
     }
 }
