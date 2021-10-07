@@ -528,7 +528,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 8359505385713504886, guid: 6a5b0838b60929b4892e7507373fd385, type: 3}
   _spawnPoints: {fileID: 1790210046}
-  _spawnTime: 2
 --- !u!1 &2077916807
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class MoveEnemies : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    void Update()
+    private void Update()
     {
         gameObject.transform.Translate(_speed * Time.deltaTime, 0, 0);
     }
