@@ -19,17 +19,28 @@ public class CoinSpawn : MonoBehaviour
         }
 
         StartCoroutine(SpawnCoins());
+        CoinDestroy.CoinDestroyed += RespawnCoin;
     }
 
     private IEnumerator SpawnCoins()
     {
-        WaitForSeconds timeWait = new WaitForSeconds(5);
-
         for (int i = 0; i < _coinSpawnPosition.Length; i++)
         {
             GameObject coin = Instantiate(_coinPrefab, _coinSpawnPosition[i].position, Quaternion.identity);
         }
 
         yield return null;
+    }
+
+    private void RespawnCoin(Vector3 position)
+    {
+        StartCoroutine(RespawnCoinCorutine(position));
+    }
+
+    private IEnumerator RespawnCoinCorutine(Vector3 position)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(10);
+        yield return waitForSeconds;
+        GameObject coin = Instantiate(_coinPrefab, position, Quaternion.identity);
     }
 }

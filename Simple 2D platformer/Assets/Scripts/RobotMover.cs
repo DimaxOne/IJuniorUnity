@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+
 public class RobotMover : MonoBehaviour
 {
     [SerializeField] private Transform _rayDuration;
