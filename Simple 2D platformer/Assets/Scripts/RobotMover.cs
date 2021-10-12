@@ -8,19 +8,10 @@ public class RobotMover : MonoBehaviour
 
     private RaycastHit2D _rayCastHit;
     private Rigidbody2D _rigidbody2D;
-    private Vector3 _startScale;
-    private Vector3 _mirrowScale;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        //_startScale = transform.localScale;
-        //_mirrowScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void FixedUpdate()

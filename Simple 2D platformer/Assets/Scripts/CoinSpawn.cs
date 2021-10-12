@@ -30,6 +30,6 @@ public class CoinSpawn : MonoBehaviour
             GameObject coin = Instantiate(_coinPrefab, _coinSpawnPosition[i].position, Quaternion.identity);
         }
 
-        yield return timeWait;
+        yield return null;
     }
 }

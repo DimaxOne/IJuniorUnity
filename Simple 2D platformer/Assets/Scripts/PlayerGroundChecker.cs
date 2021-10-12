@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGroundChecker : MonoBehaviour
 {
-    [SerializeField] private PlayerJump _playerJump;
+    [SerializeField] private PlayerJumper _playerJump;
 
     public bool OnGroung { get; private set; }
 
