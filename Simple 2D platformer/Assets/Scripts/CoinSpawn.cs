@@ -8,8 +8,9 @@ public class CoinSpawn : MonoBehaviour
     [SerializeField] private Transform _coinsSpawn;
 
     private Transform[] _coinSpawnPosition;
+    private CoinDestroy[] _coins;
 
-    private void Start()
+    private void Awake()
     {
         _coinSpawnPosition = new Transform[_coinsSpawn.childCount];
 
@@ -19,7 +20,22 @@ public class CoinSpawn : MonoBehaviour
         }
 
         StartCoroutine(SpawnCoins());
-        CoinDestroy.CoinDestroyed += RespawnCoin;
+    }
+
+    private void OnEnable()
+    {
+        _coins = gameObject.GetComponentsInChildren<CoinDestroy>();
+
+        foreach (var coin in _coins)
+        {
+            coin.OnDestroyed += RespawnCoin;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var coin in _coins)
+            coin.OnDestroyed -= RespawnCoin;
     }
 
     private IEnumerator SpawnCoins()
@@ -34,12 +50,13 @@ public class CoinSpawn : MonoBehaviour
 
     private void RespawnCoin(Vector3 position)
     {
+        Debug.Log("Use respawn coin");
         StartCoroutine(RespawnCoinCorutine(position));
     }
 
     private IEnumerator RespawnCoinCorutine(Vector3 position)
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(10);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(2);
         yield return waitForSeconds;
         GameObject coin = Instantiate(_coinPrefab, position, Quaternion.identity);
     }
