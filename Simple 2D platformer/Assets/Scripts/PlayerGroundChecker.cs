@@ -10,6 +10,6 @@ public class PlayerGroundChecker : MonoBehaviour
     {
        OnGroung = collision.TryGetComponent<Platforms>(out Platforms platforms);
         if (OnGroung)
-            _playerJump.ChangeJumpStatus(false);
+            _playerJump.IsJump = false;
     }
 }

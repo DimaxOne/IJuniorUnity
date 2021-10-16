@@ -11,7 +11,7 @@ public class PlayerJumper : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
-    public bool IsJump { get; private set; }
+    public bool IsJump;
     
     public static class AnimatorKnight_Player
     {
@@ -19,11 +19,6 @@ public class PlayerJumper : MonoBehaviour
         {
             public const string JumpForce = nameof(JumpForce);
         }
-    }
-
-    public void ChangeJumpStatus(bool status)
-    {
-        IsJump = status;
     }
 
     private void Start()
