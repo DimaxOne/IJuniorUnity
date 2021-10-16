@@ -3,19 +3,13 @@ using UnityEngine.Events;
 
 public class CoinDestroy : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<Vector3> _coinDestroyed;
+    public static event UnityAction<Vector3> OnDestroyed;
 
-    public event UnityAction<Vector3> OnDestroyed
-    {
-        add => _coinDestroyed.AddListener(value);
-        remove => _coinDestroyed.RemoveListener(value);
-    }
-
-private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerMover>(out PlayerMover player))
         {
-            _coinDestroyed?.Invoke(transform.position);
+            OnDestroyed(transform.position);
             Destroy(gameObject);
         }     
     }
