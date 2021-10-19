@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RobotSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject _robotPrefab;
+    [SerializeField] private RobotMover _robotPrefab;
     [SerializeField] private Transform _spawnPoints;
 
     private Transform[] _spawnPositions;
@@ -14,8 +14,7 @@ public class RobotSpawn : MonoBehaviour
         for (int i = 0; i < _spawnPoints.childCount; i++)
         {
             _spawnPositions[i] = _spawnPoints.GetChild(i);
-            GameObject robot = Instantiate(_robotPrefab, _spawnPositions[i].position, Quaternion.identity);
+            var robot = Instantiate(_robotPrefab, _spawnPositions[i].position, Quaternion.identity);
         }
     }
-
 }

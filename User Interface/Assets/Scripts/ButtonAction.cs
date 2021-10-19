@@ -1,14 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-[RequireComponent(typeof(Animator))]
 public class ButtonAction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Animator _animator;
 
     private void Start()
     {
-        _animator = gameObject.GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     public static class AnimatorButtonAction

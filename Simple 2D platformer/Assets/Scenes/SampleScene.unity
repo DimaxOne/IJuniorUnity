@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de9676c55ab0354488dc65c7c602b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _robotPrefab: {fileID: 1610196424219227718, guid: 56c4b1d8905031247b9d6bbe0a8be128, type: 3}
+  _robotPrefab: {fileID: 1610196424219227772, guid: 56c4b1d8905031247b9d6bbe0a8be128, type: 3}
   _spawnPoints: {fileID: 430341311}
 --- !u!4 &430341311
 Transform:
@@ -12365,7 +12365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d4027ca2411f14688120709e5e863f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerJump: {fileID: 1541963504}
 --- !u!58 &1147322235
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12462,7 +12461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211f27ae3bce06446b98607dfde2d26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 1554472605863138324, guid: 17def51264253d8489ac3d6ad03c8610, type: 3}
+  _coinPrefab: {fileID: 1554472605863138320, guid: 17def51264253d8489ac3d6ad03c8610, type: 3}
   _coinsSpawn: {fileID: 1169262329}
 --- !u!4 &1169262329
 Transform:
@@ -12654,7 +12653,6 @@ MonoBehaviour:
   _speed: 5
   _animator: {fileID: 1541963498}
   _groundChecker: {fileID: 1147322234}
-  _playerJump: {fileID: 1541963504}
 --- !u!114 &1541963504
 MonoBehaviour:
   m_ObjectHideFlags: 0

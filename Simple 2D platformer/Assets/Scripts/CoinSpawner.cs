@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private CoinDestroyer _coinPrefab;
     [SerializeField] private Transform _coinsSpawn;
 
     private Transform[] _coinSpawnPosition;
@@ -16,7 +15,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < _coinsSpawn.childCount; i++)
         {
             _coinSpawnPosition[i] = _coinsSpawn.GetChild(i);
-            GameObject coin = Instantiate(_coinPrefab, _coinSpawnPosition[i].position, Quaternion.identity);
+            var coin = Instantiate(_coinPrefab, _coinSpawnPosition[i].position, Quaternion.identity);
         }
     }
 
@@ -32,13 +31,13 @@ public class CoinSpawner : MonoBehaviour
 
     private void RespawnCoin(Vector3 position)
     {
-        StartCoroutine(RespawnCoinCorutine(position));
+        StartCoroutine(Respawn(position));
     }
 
-    private IEnumerator RespawnCoinCorutine(Vector3 position)
+    private IEnumerator Respawn(Vector3 position)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(5);
         yield return waitForSeconds;
-        GameObject coin = Instantiate(_coinPrefab, position, Quaternion.identity);
+        var coin = Instantiate(_coinPrefab, position, Quaternion.identity);
     }
 }

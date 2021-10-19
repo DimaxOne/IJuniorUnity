@@ -6,7 +6,6 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerGroundChecker _groundChecker;
-    [SerializeField] private PlayerJumper _playerJump;
 
     private Rigidbody2D _rigidbody2D;
     private float _directionMovement;
@@ -36,11 +35,14 @@ public class PlayerMover : MonoBehaviour
             transform.localScale = _startScale;
         if (_directionMovement < 0)
             transform.localScale = _mirrowScale;
+        if (!_groundChecker.OnGroung)
+            return;
 
-        if (_directionMovement != 0 && _groundChecker.OnGroung && !_playerJump.IsJump)
+        if (_directionMovement != 0 && _groundChecker.OnGroung)
         {
             _rigidbody2D.velocity = new Vector2(_directionMovement * _speed, 0);
         }
+
         _animator.SetFloat(AnimatorKnight_Player.Parameters.Speed, Mathf.Abs(_directionMovement));
     }
 }
