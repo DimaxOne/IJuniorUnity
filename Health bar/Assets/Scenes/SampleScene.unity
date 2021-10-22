@@ -464,6 +464,23 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 6dffa9e27764670499a2bcc39d7e100d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+--- !u!1 &355783413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100166, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
+  m_PrefabInstance: {fileID: 355783412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &355783414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355783413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dceebb81262f9940b1da4727e5f075a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdddb95e4c46ab40a36edddd1e54c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 355783414}
 --- !u!1 &1748875549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,8 +1164,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405511999}
-        m_TargetAssemblyTypeName: HealhBar, Assembly-CSharp
+      - m_Target: {fileID: 355783414}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnButtonUpClick
         m_Mode: 1
         m_Arguments:
@@ -1354,8 +1372,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405511999}
-        m_TargetAssemblyTypeName: HealhBar, Assembly-CSharp
+      - m_Target: {fileID: 355783414}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnButtomDownClick
         m_Mode: 1
         m_Arguments:
