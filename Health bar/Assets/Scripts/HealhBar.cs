@@ -8,6 +8,7 @@ public class HealhBar : MonoBehaviour
 
     private Slider _slider;
     private float _duration;
+    private bool _isValueChange;
 
     private void Start()
     {
@@ -18,11 +19,28 @@ public class HealhBar : MonoBehaviour
         _duration = 10f;
     }
 
+    private void OnEnable()
+    {
+        ButtonAction.ChangedHealth += ChangeValue;
+    }
+
+    private void OnDisable()
+    {
+        ButtonAction.ChangedHealth -= ChangeValue;
+    }
+
     private void Update()
     {
-        if (_slider.value == _player.CurrentHealth)
-            return;
-        else
-            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration * Time.deltaTime);  
+        if(_isValueChange)
+        {
+            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration * Time.deltaTime);
+            if (_slider.value == _player.CurrentHealth)
+                _isValueChange = false;
+        }  
+    }
+
+    private void ChangeValue()
+    {
+        _isValueChange = true;
     }
 }

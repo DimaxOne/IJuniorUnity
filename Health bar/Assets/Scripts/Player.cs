@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float MinimumHealth => _minimumHealth;
     public float CurrentHealth => _currentHealth;
 
-    public void OnButtonUpClick()
+    public void GetHealth()
     {
         if (!_isDead && _currentHealth != _maximumHealth)
         {
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         }   
     }
 
-    public void OnButtomDownClick()
+    public void GetDamage()
     {
         if (!_isDead && _currentHealth != _minimumHealth)
         {
