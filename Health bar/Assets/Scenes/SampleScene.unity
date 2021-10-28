@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 917487623}
   - component: {fileID: 917487622}
   - component: {fileID: 917487621}
+  - component: {fileID: 917487625}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -754,6 +755,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &917487625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917487620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a40cf5207d7fd4897a1c43d2e8d5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 355783414}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,8 +1178,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 355783414}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 917487625}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: OnButtonUpClick
         m_Mode: 1
         m_Arguments:
@@ -1372,9 +1386,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 355783414}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnButtomDownClick
+      - m_Target: {fileID: 917487625}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: OnButtonDownClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

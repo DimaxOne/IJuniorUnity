@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,39 +9,39 @@ public class HealhBar : MonoBehaviour
 
     private Slider _slider;
     private float _duration;
-    private bool _isValueChange;
+    private WaitForSeconds _waitingTime;
 
     private void Start()
     {
         _slider = GetComponent<Slider>();
+        _waitingTime = new WaitForSeconds(0.05f);
         _slider.maxValue = _player.MaximumHealth;
         _slider.minValue = _player.MinimumHealth;
         _slider.value = _player.CurrentHealth;
-        _duration = 10f;
+        _duration = 1f;
     }
 
     private void OnEnable()
     {
-        ButtonAction.ChangedHealth += ChangeValue;
+        _player.ChangedHealth += ChangeValue;
     }
 
     private void OnDisable()
     {
-        ButtonAction.ChangedHealth -= ChangeValue;
-    }
-
-    private void Update()
-    {
-        if(_isValueChange)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration * Time.deltaTime);
-            if (_slider.value == _player.CurrentHealth)
-                _isValueChange = false;
-        }  
+        _player.ChangedHealth -= ChangeValue;
     }
 
     private void ChangeValue()
     {
-        _isValueChange = true;
+        StartCoroutine(Change());
     }
+
+    private IEnumerator Change()
+    {
+        while (_slider.value != _player.CurrentHealth)
+        {
+            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration);
+            yield return _waitingTime;
+        }  
+    }    
 }

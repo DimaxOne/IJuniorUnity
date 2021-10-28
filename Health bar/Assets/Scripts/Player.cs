@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Player : MonoBehaviour
     private float _minimumHealth;
     private bool _isDead;
     private float _currentHealth;
+
+    public event UnityAction ChangedHealth;
 
     public float MaximumHealth => _maximumHealth;
     public float MinimumHealth => _minimumHealth;
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
                 _currentHealth += _shiftHealth;
             else 
                 _currentHealth = _maximumHealth;
+
+            ChangedHealth?.Invoke();
         }
         else
         {
@@ -43,7 +48,9 @@ public class Player : MonoBehaviour
                 _currentHealth = _minimumHealth;
                 _isDead = true;
                 Debug.Log("Персонаж погиб.");
-            }    
+            }
+
+            ChangedHealth?.Invoke();
         }
         else
         {
