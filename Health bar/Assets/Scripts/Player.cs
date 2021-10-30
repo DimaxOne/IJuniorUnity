@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     public void GetHealth()
     {
-        if (!_isDead)
+        if (!_isDead && _currentHealth < _maximumHealth)
         {
             _currentHealth += Mathf.Clamp(_shiftHealth, _minimumHealth, _maximumHealth);
             ChangedHealth?.Invoke();
