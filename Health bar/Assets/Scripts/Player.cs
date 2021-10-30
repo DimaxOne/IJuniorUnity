@@ -3,9 +3,10 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _maximumHealth;
+    [SerializeField] private float _minimumHealth;
+
     private float _shiftHealth;
-    private float _maximumHealth;
-    private float _minimumHealth;
     private bool _isDead;
     private float _currentHealth;
 
@@ -15,55 +16,32 @@ public class Player : MonoBehaviour
     public float MinimumHealth => _minimumHealth;
     public float CurrentHealth => _currentHealth;
 
+    private void Start()
+    {
+        _shiftHealth = 10f;
+        _currentHealth = 100f;
+        _isDead = false;
+    }
+
     public void GetHealth()
     {
-        if (!_isDead && _currentHealth != _maximumHealth)
+        if (!_isDead)
         {
-            if (_currentHealth + _shiftHealth <= _maximumHealth)
-                _currentHealth += _shiftHealth;
-            else 
-                _currentHealth = _maximumHealth;
-
+            _currentHealth += Mathf.Clamp(_shiftHealth, _minimumHealth, _maximumHealth);
             ChangedHealth?.Invoke();
-        }
-        else
-        {
-            if (_isDead)
-                Debug.Log("Персонаж мертв.");
-            else
-                Debug.Log("Персонаж здоров.");
-        }   
+        }  
     }
 
     public void GetDamage()
     {
-        if (!_isDead && _currentHealth != _minimumHealth)
+        if (!_isDead)
         {
-            if (_currentHealth - _shiftHealth > _minimumHealth)
-            {
-                _currentHealth -= _shiftHealth;
-            } 
-            else
-            {
-                _currentHealth = _minimumHealth;
+            _currentHealth -= Mathf.Clamp(_shiftHealth, _minimumHealth, _maximumHealth);
+
+            if (_currentHealth == _minimumHealth)
                 _isDead = true;
-                Debug.Log("Персонаж погиб.");
-            }
 
             ChangedHealth?.Invoke();
-        }
-        else
-        {
-            Debug.Log("Персонаж мертв.");
         }  
-    }
-
-    private void Start()
-    {
-        _shiftHealth = 10f;
-        _maximumHealth = 120;
-        _minimumHealth = 0;
-        _currentHealth = 100f;
-        _isDead = false;
     }
 }

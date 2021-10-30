@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class HealhBar : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private float _waitingSeconds;
 
     private Slider _slider;
     private float _duration;
-    private WaitForSeconds _waitingTime;
 
     private void Start()
     {
         _slider = GetComponent<Slider>();
-        _waitingTime = new WaitForSeconds(0.05f);
         _slider.maxValue = _player.MaximumHealth;
         _slider.minValue = _player.MinimumHealth;
         _slider.value = _player.CurrentHealth;
@@ -38,7 +37,9 @@ public class HealhBar : MonoBehaviour
 
     private IEnumerator Change()
     {
-        while (_slider.value != _player.CurrentHealth)
+        WaitForSeconds _waitingTime = new WaitForSeconds(_waitingSeconds);
+
+        while (_slider.value != _player.CurrentHealth)  
         {
             _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHealth, _duration);
             yield return _waitingTime;
